@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--
+      JavaScript WA120
+	  Capstone Project
+      Author: Brian McLaughlin
+      Date: 7/3/18   
+
+      Filename: toolbox.htm
+   -->
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+   <title>JavaScript Toolbox</title>
+   <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+   <header>
+      <h1>
+         JavaScript ToolBox
+      </h1>
+   </header>
+
+   <article>
+      <div id="results">
+          <ul>
+             <li id="item1"></li>
+             <li id="item2"></li>
+             <li id="item3"></li>
+             <li id="item4"></li>
+             <li id="item5"></li>
+          </ul>
+          <p id="resultsFin"></p>
+      </div>
+      <form>
+          <fieldset>
+            <label for="toolBox" id="placeLabel">
+              Type the name of a tool, then click Submit:
+            </label>
+            <input type="text" id="toolBox" />
+          </fieldset>
+          <fieldset>
+            <button type="button" id="button">Submit</button>
+          </fieldset>
+      </form>
+   </article>
+   <script>
+		//declares the varaiables that will be used throughout the JavaScript
+		var i = 1;
+		var listItem = "";
+		//function to put the value of the toolbox label  into the bullet list
+		function processInput() {
+			if (i <= 5) {
+				listItem = "item" + i;
+				//targets the list item with the proper id and writes the toolBox value to it
+				document.getElementById(listItem).innerHTML = document.getElementById("toolBox").value;
+				//changes the value of toolBox to an empty string to clear after an item is submitted
+				document.getElementById("toolBox").value = "";
+				if (i == 5) {
+					// displays message if the list is full
+					document.getElementById("resultsFin").innerHTML = "Thanks for your suggestions."
+				}
+			//increases the counter 
+			 i++;
+			}
+		}
+		//Adds eventListener to run the processInput when the submit button is clicked
+		document.getElementById("button").addEventListener("click", processInput);
+   </script>
+</body>
+</html>
